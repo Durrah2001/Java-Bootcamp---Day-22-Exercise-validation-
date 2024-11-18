@@ -22,9 +22,9 @@ public class Event {
     //////////////////////
 
     @NotNull(message = "Capacity can't be null!")
-    @Positive(message = "Capacity must be a number only!")
+    @Positive(message = "Capacity must be a number only!") //Integer values will be number automatically
     @Min(26)
-    private int capacity;
+    private int capacity;    //Data type is integer, since the capacity will apply mathematical operations on it
     /////////////////////
 
     @JsonFormat
