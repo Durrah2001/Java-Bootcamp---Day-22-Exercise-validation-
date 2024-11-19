@@ -60,19 +60,21 @@ public class ProjectController {
     //End CRUD endpoints
 
 
-    @PutMapping(path = "/changeStatus/{status}")
-    public ResponseEntity changeStatus(@PathVariable String status) {
+    @PutMapping(path = "/changeStatus/{ID}")
+    public ResponseEntity changeStatus(@PathVariable String ID) {
 
         for (Project project : projects) {
 
-            if (project.getStatus().equalsIgnoreCase("Not Started")) {
+            if (project.getId().equalsIgnoreCase(ID)) {
+
+                if(project.getStatus().equalsIgnoreCase("Not Started"))
                 project.setStatus("In Progress");
-            }
-            if (project.getStatus().equalsIgnoreCase("In Progress")) {
-                project.setStatus("Completes");
+                
+                else 
+                    project.setStatus("Completed");
             }
 
-
+            
         } //End for
         return ResponseEntity.status(200).body(new ApiResponse("Project status updated successfully!"));
     }
